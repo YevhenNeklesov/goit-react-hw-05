@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: #434455;
+  background-color: #ffffff;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+img {
+  display: block;
+  width: 100%;
+}
+
+a:not(.police-link) {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  display: block;
+}
+
+address {
+  font-style: normal;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
