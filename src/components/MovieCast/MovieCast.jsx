@@ -25,7 +25,7 @@ const MovieCast = () => {
             <img
               className={s.img}
               src={`https://image.tmdb.org/t/p/w200${castName.profile_path}`}
-              alt={`Foto ${castName.original_name}`} />
+              alt={`${castName.original_name} img`} />
             <p className={s.name}>{castName.name}</p>
             <p>Character: {castName.character}</p>
           </li>

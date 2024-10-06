@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
-import { NavLink, Outlet, useParams } from "react-router-dom"
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom"
 import { fetchMovieById } from "../../services/TMDB-api"
 import s from './MovieDetailsPage.module.css'
 
 
 const MovieDetailsPage = () => {
 
+  const location = useLocation()
+  console.log(location);
   const { movieId } = useParams()
-  
   const [movie, setMovie] = useState(null)
 
   useEffect(() => {
@@ -21,7 +22,8 @@ const MovieDetailsPage = () => {
   if (!movie) return <p>Loading</p>
 
   return (
-      <div className={s.container}>
+    <div className={s.container}>
+      <Link to={location.state}>Go back</Link>
       <div className={s.imgBox}>
         <img className={s.img} src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
         <div>
@@ -37,13 +39,15 @@ const MovieDetailsPage = () => {
             </li>
           ))}
           </ul>
-        </div>
+        </div>      
       </div>
+      <hr />
         <h3>Additional information</h3>
         <div>
           <NavLink to='cast'>Cast</NavLink>
           <NavLink to='reviews'>Reviews</NavLink>
-        </div>
+      </div>
+      <hr />
       <div>
         <Outlet/>
       </div>

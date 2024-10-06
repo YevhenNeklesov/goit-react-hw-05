@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { NavLink, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { fetchMovieReviews } from "../../services/TMDB-api"
 
 
@@ -26,7 +26,7 @@ const MovieReviews = () => {
         {reviews.results.map(review => (
           <li key={review.id}>
             <h3>{review.author}</h3>
-            <NavLink><p>{review.content}</p></NavLink>
+            <p>{review.content}</p>
           </li>
         ))}
       </ul>

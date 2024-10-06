@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import { fetchMovies } from "../../services/TMDB-api"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 
 
 const HomePage = () => {
-
+    const location = useLocation()
     const [movies, setMovies] = useState([])
-
-
     
     useEffect(() => {
         const getAllMovies = async () => {
@@ -23,7 +21,7 @@ const HomePage = () => {
           <ul>
               {movies.map(movie => (
                   <li key={movie.id}>
-                      <Link to={`/movies/${movie.id.toString()}`}>
+                      <Link to={`/movies/${movie.id.toString()}`} state={location}>
                           <p>{movie.title}</p>
                       </Link>
                   </li>
