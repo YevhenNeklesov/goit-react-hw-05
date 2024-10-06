@@ -1,7 +1,6 @@
 
 import s from "./SearchBar.module.css"
 import { Formik, Form, Field } from 'formik'
-import toast from "react-hot-toast";
 
 const SearchBar = ({ handleQuery }) => {
     const initialValues = {
@@ -9,10 +8,6 @@ const SearchBar = ({ handleQuery }) => {
     }
     const handleSubmit = values => {
       handleQuery(values.query)
-      !values.query && toast("Need to fill the field", {
-        duration: '400',
-        position: 'top-right'
-      })
   }
 
   return (

@@ -1,10 +1,12 @@
 .container {
-  padding: 16px;
+  padding-right: 16px;
+  padding-left: 16px;
   /* display: flex; */
 }
 
 .imgBox {
   display: flex;
+  margin-top: 10px;
   gap: 20px;
 }
 
@@ -14,6 +16,36 @@
 }
 
 .list {
+  list-style-type: none;
   display: flex;
   gap: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.back {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 1px 7px;
+  text-decoration: none;
+}
+
+.additInfo {
+  margin-bottom: 20px;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 30px;
+}
+
+.link {
+  color: blue;
 }

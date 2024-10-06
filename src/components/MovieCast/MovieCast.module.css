@@ -1,4 +1,17 @@
 .img {
-  width: 150px;
-  height: 200px;
+  width: 100px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.list {
+  padding-left: 30px;
+}
+
+.name {
+  margin-bottom: 15px;
+}
+
+.item {
+  margin-bottom: 10px;
 }
