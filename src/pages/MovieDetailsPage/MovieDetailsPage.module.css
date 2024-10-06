@@ -1,0 +1,19 @@
+.container {
+  padding: 16px;
+  /* display: flex; */
+}
+
+.imgBox {
+  display: flex;
+  gap: 20px;
+}
+
+.img {
+  width: 200px;
+  height: 300px;
+}
+
+.list {
+  display: flex;
+  gap: 10px;
+}

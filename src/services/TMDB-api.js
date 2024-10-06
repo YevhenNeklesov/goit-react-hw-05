@@ -13,3 +13,27 @@ export const fetchMovies = async () => {
     return data.results
 }
 
+
+export const fetchMovieById = async (movieId) => {
+    const { data } = await axios.get(`movie/${movieId}?language=en-US`, options)
+    return data
+}
+
+
+export const fetchMovieCredits = async (movieId) => {
+    const { data } = await axios.get(`movie/${movieId}/credits?language=en-US`, options)
+    return data
+}
+
+
+export const fetchMovieReviews = async (movieId) => {
+    const { data } = await axios.get(`movie/${movieId}/reviews?language=en-US&page=1`, options)
+    return data
+}
+
+
+export const fetchMoviesBySearch = async () => {
+    const { data } = await axios.get('/search/movie?include_adult=false&language=en-US&page=1', options)
+    return data.results
+}
+
