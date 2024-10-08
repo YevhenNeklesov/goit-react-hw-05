@@ -1,0 +1,28 @@
+.container {
+  padding-right: 16px;
+  padding-left: 16px;
+  /* display: flex; */
+}
+
+.imgBox {
+  display: flex;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.img {
+  width: 200px;
+  height: 300px;
+}
+
+.list {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

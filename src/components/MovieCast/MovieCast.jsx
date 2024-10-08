@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react"
 import { fetchMovieCredits } from "../../services/TMDB-api"
 import { useParams } from "react-router-dom"
 import s from './MovieCast.module.css'
+import { useHttp } from "../Hooks/useHttp"
+import Loader from "../Loader/Loader"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 
 const MovieCast = () => {
 
-  const {movieId} = useParams()
-      const [cast, setCast] = useState(null)
-    useEffect(() => {
-        const getAllCast = async () => {
-            const data = await fetchMovieCredits(movieId)
-            setCast(data)
-        }
-        getAllCast()
-    }, [movieId])
-  
-      if (!cast) return <p>Loading</p>
+  const { movieId } = useParams()
+  const { data, isLoading, isError } = useHttp(fetchMovieCredits, movieId)
+
   return (
-    <div>
       <ul className={s.list}>
-        {cast.cast.map(castName => (
+        {data && data.cast.map(castName => (
           <li className={s.item} key={castName.id}>
             <img
               className={s.img}
@@ -30,9 +23,9 @@ const MovieCast = () => {
             <p>Character: {castName.character}</p>
           </li>
         ))}
+        {isLoading && <Loader />}
+        {isError && <ErrorMessage/>}
       </ul>
-    
-    </div>
   )
 }
 

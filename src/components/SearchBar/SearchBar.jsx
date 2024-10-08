@@ -7,7 +7,7 @@ const SearchBar = ({ handleQuery }) => {
         query: '',
     }
     const handleSubmit = values => {
-      handleQuery(values.query)
+        handleQuery(values.query)
   }
 
   return (

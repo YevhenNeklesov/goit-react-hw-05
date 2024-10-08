@@ -34,6 +34,6 @@ export const fetchMovieReviews = async (movieId) => {
 
 export const fetchMoviesBySearch = async (query) => {
     const { data } = await axios.get(`search/movie?query=${query}&include_adult=false&language=en-US&page=1`, options)
-    return data
+    return data.results
 }
 

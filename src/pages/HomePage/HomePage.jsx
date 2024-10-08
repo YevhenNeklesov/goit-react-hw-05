@@ -1,32 +1,26 @@
-import { useEffect, useState } from "react"
-import { fetchMovies } from "../../services/TMDB-api"
-import { Link, useLocation } from "react-router-dom"
+import MovieList from '../../components/MovieList/MovieList'
 import s from './HomePage.module.css'
+import { fetchMovies } from '../../services/TMDB-api'
+import { useHttp } from '../../components/Hooks/useHttp'
+import Loader from '../../components/Loader/Loader'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 
 
 const HomePage = () => {
-    const location = useLocation()
-    const [movies, setMovies] = useState([])
-    
-    useEffect(() => {
-        const getAllMovies = async () => {
-            const data = await fetchMovies()
-            setMovies(data)
-        }
-        getAllMovies()
-    }, [])
+
+    const { data, isLoading, isError } = useHttp(fetchMovies)
+
   return (
-      <div className={s.container}>
-          <h1 className={s.title}>Trending today</h1>
-          <ul className={s.list}>
-              {movies.map(movie => (
-                  <li key={movie.id}>
-                      <Link to={`/movies/${movie.id.toString()}`} state={location}>
-                          <p>{movie.title}</p>
-                      </Link>
-                  </li>
-              ))}
-          </ul>
+    <div className={s.container}>
+          {data && (
+              <>
+              <h1 className={s.title}>Trending today</h1>
+                  <MovieList movies={data} />
+              </>
+           )}
+          {isLoading && <Loader />}
+          {isError && <ErrorMessage/>}
+          
     </div>
   )
 }
