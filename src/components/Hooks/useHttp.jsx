@@ -6,14 +6,15 @@ export const useHttp = (fn, params) => {
     const [data, setData] = useState(null);
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    
 
     useEffect(() => {
         const getData = async () => {
             setIsLoading(true);
             setIsError(false);
             try {
-                const result = await fn(params);
-                setData(result);
+                const results = await fn(params);
+                setData(results);
             } catch {
                 setIsError(true);
             } finally {
@@ -23,5 +24,5 @@ export const useHttp = (fn, params) => {
         getData();
     }, [fn, params]);
 
-    return { data, isError, isLoading, setData };
+    return { data, isError, isLoading };
 };

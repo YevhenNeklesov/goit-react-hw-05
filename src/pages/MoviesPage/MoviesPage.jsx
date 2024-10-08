@@ -7,12 +7,19 @@ import { useSearchParams } from "react-router-dom";
 import { useHttp } from "../../components/Hooks/useHttp";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { useEffect, useState } from "react";
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-
+  const [hasSearch, setHasSearch] = useState(false)
   const { data, isLoading, isError } = useHttp(fetchMoviesBySearch, query)
+
+  // useEffect(() => {
+  //   const getData = async () => {
+
+  //   }
+  // },[])
 
   const handleQuery = query => {
   if (!query) {
@@ -20,15 +27,14 @@ const MoviesPage = () => {
     }
     searchParams.set('query', query);
     setSearchParams(searchParams);
+    setHasSearch(true)
   }
-  console.log(data);
+  
+  if (data === null) return
   return (
     <div className={s.container}>
-      
-      {data && <>
-        <SearchBar handleQuery={handleQuery}/>
-        <MovieList movies={data} />
-      </>}
+      <SearchBar handleQuery={handleQuery}/>
+      {hasSearch && data.length === 0 ? (<p>Sorry</p>) : <MovieList movies={data} />}
       {isLoading && <Loader />}
       {isError && <ErrorMessage/>}
     </div>

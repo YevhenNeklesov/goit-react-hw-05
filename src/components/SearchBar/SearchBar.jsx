@@ -9,7 +9,7 @@ const SearchBar = ({ handleQuery }) => {
     const handleSubmit = values => {
         handleQuery(values.query)
   }
-
+    
   return (
       <div className={s.container}>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>

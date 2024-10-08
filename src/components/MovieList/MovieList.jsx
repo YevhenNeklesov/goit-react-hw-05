@@ -4,7 +4,6 @@ import s from './MovieList.module.css'
 const MovieList = ({movies}) => {
 
     const location = useLocation()
-    if (movies.length === 0) return <p className={s.noMovies}>Sorry we have no movies for you</p>
   return (
     <div className={s.container}>
           <ul className={s.list}>
